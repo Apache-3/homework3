@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [tasks, setTask] = useState([])
+  function onClickAdd() {
+    const text = prompt('please add text')
+    setTask([...tasks, text])
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <h1>List tasks</h1>
+        <button onClick={onClickAdd}>Добавить</button>
+        {tasks.map(task => (
+            <div>
+              <h2>{task}</h2>
+              <button>delete</button>
+            </div>
+        ))}
+      </div>
   );
 }
 
